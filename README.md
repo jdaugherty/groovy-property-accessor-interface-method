@@ -1,5 +1,7 @@
 # Static compilation calls an interface's accessor instead of the property's own
 
+Reported as [GROOVY-12552](https://issues.apache.org/jira/browse/GROOVY-12552). The fix is proposed in [apache/groovy#3081](https://github.com/apache/groovy/pull/3081), with a backport to `GROOVY_5_1_X` in commit [af58670a55](https://github.com/jdaugherty/groovy/commit/af58670a55e537169956b90f5fdfc8bb48c24276).
+
 When an interface declares the setter and getter of a property that a class implements as a Groovy property, static
 compilation in Groovy 5 calls the interface's methods with `invokeinterface` when the class is compiled together with
 the caller, and the class's own accessors with `invokevirtual` when the class is already compiled. The behaviour is
